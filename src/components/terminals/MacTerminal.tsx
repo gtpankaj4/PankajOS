@@ -7,7 +7,7 @@ export default function MacTerminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([
     "Welcome to macOS Terminal",
-    "Type &apos;help&apos; for available commands",
+    "Type help for available commands",
     ""
   ]);
   const inputRef = useRef<HTMLInputElement>(null);

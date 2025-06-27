@@ -7,7 +7,7 @@ export default function LinuxTerminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([
     "Welcome to Linux Terminal",
-    "Type &apos;help&apos; for available commands",
+    "Type help for available commands",
     ""
   ]);
   const inputRef = useRef<HTMLInputElement>(null);

@@ -9,7 +9,7 @@ export default function CmdTerminal() {
     "Microsoft Windows [Version 10.0.19045.3693]",
     "(c) Microsoft Corporation. All rights reserved.",
     "",
-    "Type &apos;help&apos; for available commands",
+    "Type help for available commands",
     ""
   ]);
   const inputRef = useRef<HTMLInputElement>(null);
