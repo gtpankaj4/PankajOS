@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import cvData from '../../data/cvData';
+import Image from 'next/image';
 
 export default function LinuxTerminal() {
   const [input, setInput] = useState("");
@@ -115,7 +116,7 @@ export default function LinuxTerminal() {
       <div className="flex-1 p-3 sm:p-4 text-black text-sm sm:text-base flex flex-col justify-end overflow-y-auto">
         {history.map((line, idx) =>
           line === "SHOW_IMAGE"
-            ? <img key={idx} src="/about-me.jpeg" alt="Pankaj Bhatta" style={{ width: '140px', height: '140px', objectFit: 'cover', borderRadius: '100%', margin: '16px auto', display: 'block', border: '3px solid #888' }} />
+            ? <Image key={idx} src="/about-me.jpeg" alt="Pankaj Bhatta" width={140} height={140} style={{ objectFit: 'cover', borderRadius: '100%', margin: '16px auto', display: 'block', border: '3px solid #888' }} />
             : <div key={idx}>{line}</div>
         )}
         <div className="flex items-center">

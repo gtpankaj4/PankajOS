@@ -6,7 +6,7 @@ const terminalFont = {
   fontFamily: 'JetBrains Mono, Fira Mono, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
 };
 
-const sections = {
+const sections: Record<string, string[]> = {
   about: [
     "Hi, I'm Pankaj!",
     "I'm a full-stack developer, terminal lover, and comic UI fan.",
@@ -26,14 +26,14 @@ const sections = {
   ]
 };
 
-const commands = {
+const commands: Record<string, string> = {
   ls: "about  experience  skills",
   "cd about": "about",
   "cd pankaj-experience": "experience",
   "cd skills": "skills",
 };
 
-export default function TerminalDetail({ open, onClose, type }: { open: boolean; onClose: () => void; type: string }) {
+export default function TerminalDetail({ open, onClose }: { open: boolean; onClose: () => void; }) {
   const [history, setHistory] = useState<string[]>(["Do you want to know more about me? (y/n)"]);
   const [input, setInput] = useState("");
   const [section, setSection] = useState<string | null>(null);
@@ -57,8 +57,9 @@ export default function TerminalDetail({ open, onClose, type }: { open: boolean;
     if (cmd === "ls") {
       setHistory((h) => [...h, "> ls", commands.ls]);
     } else if (commands[cmd]) {
-      setSection(commands[cmd]);
-      setHistory((h) => [...h, "> " + cmd, ...sections[commands[cmd]]]);
+      const key = commands[cmd];
+      setSection(key);
+      setHistory((h) => [...h, "> " + cmd, ...sections[key]]);
     } else if (cmd === "exit") {
       setHistory((h) => [...h, "> exit", "Exiting…"]);
       setTimeout(onClose, 1200);
