@@ -16,11 +16,6 @@ export default function Navbar() {
     document.body.classList.add(theme);
   }, [theme]);
 
-  const handleLogoClick = () => {
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
   return (
     <nav className="sticky top-4 z-50 w-full flex justify-center px-0">
       <div className="navbar-glass w-full max-w-[98vw] mx-2 flex items-center justify-between px-4 py-3">
