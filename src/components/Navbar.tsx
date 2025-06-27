@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import React from "react";
+import Link from 'next/link';
 
 const navLinks = [
   { name: "Go to my official website", href: "https://pankaj-bhatta.com.np" },
@@ -26,7 +27,7 @@ export default function Navbar() {
         {/* Desktop Navbar */}
         <div className="hidden xl:flex w-full items-center justify-between">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className="relative flex items-baseline select-none focus:outline-none px-2 sm:px-4 py-2 whitespace-nowrap"
             style={{ fontFamily: 'Breadline, sans-serif', fontWeight: 'normal', color: theme === 'dark' ? '#fff' : '#23223a', letterSpacing: '0.12em' }}
@@ -70,12 +71,12 @@ export default function Navbar() {
                 right: 0
               }}
             />
-          </a>
+          </Link>
           {/* Nav links with dividers */}
           <ul className="flex gap-12 items-center text-base font-bold mx-2">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a 
+                <Link 
                   href={link.href} 
                   className="navbar-zoom-link hover:text-accent-blue transition-colors px-8 py-2 rounded-lg border border-main inline-flex items-center min-w-0 whitespace-nowrap max-w-fit overflow-x-auto"
                   style={{ 
@@ -86,7 +87,7 @@ export default function Navbar() {
                   }}
                 >
                   <span className="truncate">{link.name}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -107,7 +108,7 @@ export default function Navbar() {
         {/* Mobile Navbar */}
         <div className="flex xl:hidden w-full items-center justify-between">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className="relative flex items-baseline select-none focus:outline-none px-2 sm:px-4 py-2 whitespace-nowrap"
             style={{ fontFamily: 'Breadline, sans-serif', fontWeight: 'normal', color: theme === 'dark' ? '#fff' : '#23223a', letterSpacing: '0.12em' }}
@@ -151,7 +152,7 @@ export default function Navbar() {
                 right: 0
               }}
             />
-          </a>
+          </Link>
           <div className="flex items-center gap-1">
             <button
               onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -184,7 +185,7 @@ export default function Navbar() {
           <ul className="absolute top-full left-0 w-full navbar-glass border-t border-main flex flex-col gap-4 p-4 xl:hidden z-30 shadow-xl animate-logo-pop rounded-b-2xl">
             {navLinks.map((link) => (
               <li key={link.name} className="flex items-center m-0 p-0">
-                <a
+                <Link
                   href={link.href}
                   className="navbar-zoom-link block w-full py-2 px-4 text-base font-bold hover:text-accent-blue transition-colors leading-none rounded-lg border border-main inline-flex items-center justify-between min-w-0 whitespace-nowrap max-w-fit overflow-x-auto"
                   style={{ 
@@ -197,7 +198,7 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   <span className="truncate">{link.name}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

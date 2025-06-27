@@ -31,12 +31,12 @@ function AboutMeTerminalSection() {
   }, [history]);
 
   const handleCommand = (cmd: string) => {
-    let output: any = [];
+    let output: string[] = [];
     if (cmd === "clear") {
       setHistory([]);
       return;
     } else if (commands[cmd]) {
-      output = commands[cmd];
+      output = commands[cmd] as string[];
     } else {
       output = [
         `Command not found: ${cmd}. Type 'help' for available commands.`
@@ -91,24 +91,6 @@ export default function Home() {
         <LinuxTerminal />
         <CmdTerminal />
         <PowerShellTerminal />
-      </div>
-    </div>
-  );
-}
-
-// SkillBar component
-function SkillBar({ label, percent }: { label: string; percent: number }) {
-  return (
-    <div>
-      <div className="flex justify-between mb-1">
-        <span className="font-semibold text-[#181816] dark:text-white">{label}</span>
-        <span className="text-[#181816] dark:text-white">{percent}%</span>
-      </div>
-      <div className="w-full h-2 bg-[#e5e5e5] dark:bg-[#333] rounded-full transition-colors duration-500">
-        <div
-          className="h-2 rounded-full bg-red-500"
-          style={{ width: `${percent}%` }}
-        />
       </div>
     </div>
   );

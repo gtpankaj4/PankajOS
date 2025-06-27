@@ -15,16 +15,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const bangers = {
-  fontFamily: 'Bangers, cursive',
-  variable: '--font-bangers',
-};
-
-const comicNeue = {
-  fontFamily: 'Comic Neue, cursive',
-  variable: '--font-comic-neue',
-};
-
 export const metadata: Metadata = {
   title: "Pankaj OS",
   description: "Pankaj Bhatta's interactive portfolio and terminal experience.",
