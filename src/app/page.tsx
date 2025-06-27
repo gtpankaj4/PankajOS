@@ -1,103 +1,115 @@
+"use client";
+import Navbar from "@/components/Navbar";
+import MacTerminal from "@/components/terminals/MacTerminal";
+import LinuxTerminal from "@/components/terminals/LinuxTerminal";
+import CmdTerminal from "@/components/terminals/CmdTerminal";
+import PowerShellTerminal from "@/components/terminals/PowerShellTerminal";
 import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
+
+function AboutMeTerminalSection() {
+  const aboutText = `I'm a web designer and graphics editor with expertise in Adobe Photoshop, CSS, HTML, and C. I'm also a proficient video editor using Adobe Premiere Pro, and a quick learner always seeking new challenges to further develop my skills. My attention to detail and commitment quality me to deliver unique and innovative solutions to any project.`;
+  type CommandMap = { [key: string]: (string | React.ReactNode)[] };
+  const commands: CommandMap = {
+    help: [
+      "Available commands:",
+      "about - Show about me info",
+      "photo - Show my photo",
+      "clear - Clear the terminal"
+    ],
+    about: [aboutText],
+    photo: [<Image key="photo" src="/hero.jpg" alt="Pankaj Bhatta" width={220} height={260} className="rounded-lg object-cover border-2 border-terminal mx-auto my-4" />],
+  };
+  const [history, setHistory] = useState([
+    "Welcome to PankajOS! Type 'help' to get started."
+  ]);
+  const [input, setInput] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [history]);
+
+  const handleCommand = (cmd: string) => {
+    let output: any = [];
+    if (cmd === "clear") {
+      setHistory([]);
+      return;
+    } else if (commands[cmd]) {
+      output = commands[cmd];
+    } else {
+      output = [
+        `Command not found: ${cmd}. Type 'help' for available commands.`
+      ];
+    }
+    setHistory((h) => [...h, `> ${cmd}`, ...output]);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    handleCommand(input.trim());
+    setInput("");
+  };
+
+  return (
+    <section className="w-full flex flex-col items-center justify-center pt-8 pb-0 px-2 mb-4" style={{ marginBottom: '1rem' }}>
+      <div className="w-full max-w-2xl rounded-xl border-2 border-terminal bg-[#f3eee7] dark:bg-[#181816] shadow-lg p-0 overflow-hidden terminal-zoom">
+        <div className="px-4 py-2 flex items-center border-b border-terminal bg-[#e5e5e5] dark:bg-[#23223a]">
+          <span className="font-mono font-bold text-lg text-[#181816] dark:text-[#fff]">PankajOS Terminal</span>
+        </div>
+        <div className="p-4 min-h-[300px] font-mono text-sm sm:text-base text-[#181816] dark:text-[#f6eedc]">
+          {history.map((line, idx) => (
+            <div key={idx} className="mb-1">{line}</div>
+          ))}
+          <form onSubmit={handleSubmit} className="flex items-center mt-2">
+            <span className="mr-2 text-green-400">$</span>
+            <input
+              ref={inputRef}
+              className="flex-1 bg-transparent outline-none border-none font-mono text-sm sm:text-base text-[#181816] dark:text-[#f6eedc]"
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              autoFocus
+              spellCheck={false}
+            />
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="relative min-h-screen flex flex-col main-bg transition-colors duration-500 overflow-x-hidden overflow-y-auto">
+      <Navbar />
+      {/* About Me Terminal Section at the top */}
+      <AboutMeTerminalSection />
+      {/* Responsive terminal grid below */}
+      <div className="flex-1 grid grid-cols-1 grid-rows-4 gap-4 sm:gap-6 p-3 sm:p-4 md:p-6 max-w-[1400px] mx-auto w-full sm:grid-cols-2 sm:grid-rows-2 z-10">
+        <MacTerminal />
+        <LinuxTerminal />
+        <CmdTerminal />
+        <PowerShellTerminal />
+      </div>
+    </div>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+// SkillBar component
+function SkillBar({ label, percent }: { label: string; percent: number }) {
+  return (
+    <div>
+      <div className="flex justify-between mb-1">
+        <span className="font-semibold text-[#181816] dark:text-white">{label}</span>
+        <span className="text-[#181816] dark:text-white">{percent}%</span>
+      </div>
+      <div className="w-full h-2 bg-[#e5e5e5] dark:bg-[#333] rounded-full transition-colors duration-500">
+        <div
+          className="h-2 rounded-full bg-red-500"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
     </div>
   );
 }
