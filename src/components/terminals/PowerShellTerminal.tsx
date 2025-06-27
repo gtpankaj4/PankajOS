@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import cvData from '../../data/cvData';
-import Image from 'next/image';
 
 export default function PowerShellTerminal() {
   const [input, setInput] = useState("");
@@ -67,7 +66,6 @@ export default function PowerShellTerminal() {
         break;
       case "get-about":
         newHistory.push("About Me:");
-        newHistory.push("SHOW_IMAGE");
         newHistory.push("Pankaj Bhatta");
         newHistory.push("Kathmandu, Nepal");
         newHistory.push("");
@@ -125,11 +123,7 @@ export default function PowerShellTerminal() {
         <span className="text-accent-blue font-mono font-bold tracking-widest">Windows PowerShell</span>
       </div>
       <div className="flex-1 p-4 text-accent-blue text-base flex flex-col justify-end overflow-y-auto powershell-terminal-content">
-        {history.map((line, idx) =>
-          line === "SHOW_IMAGE"
-            ? <Image key={idx} src="/about-me.jpeg" alt="Pankaj Bhatta" width={140} height={140} style={{ objectFit: 'cover', borderRadius: '100%', margin: '16px auto', display: 'block', border: '3px solid #888' }} />
-            : <div key={idx}>{line}</div>
-        )}
+        {history.map((line, idx) => <div key={idx}>{line}</div>)}
         <div className="flex items-end">
           <span className="text-accent-blue font-mono text-sm sm:text-base leading-normal">PS C:\Users\Pankaj&gt;</span>
           <input
