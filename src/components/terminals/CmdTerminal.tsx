@@ -138,6 +138,14 @@ export default function CmdTerminal() {
             spellCheck="false"
             autoComplete="off"
           />
+          <button
+            type="button"
+            className="ml-0 p-2 rounded bg-accent-yellow text-black block sm:hidden flex items-center justify-center"
+            onClick={() => { handleCommand(input); setInput(""); }}
+            aria-label="Enter command"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-4-4 4 4-4 4"/></svg>
+          </button>
         </div>
       </div>
     </div>

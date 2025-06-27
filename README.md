@@ -30,8 +30,8 @@ Welcome to **PankajOS**! This is a fun and interactive portfolio website made by
    npm install
    ```
 3. **Run the development server:**
-   ```bash
-   npm run dev
+```bash
+npm run dev
    ```
 4. **Open your browser:**
    Go to [http://localhost:3000](http://localhost:3000)

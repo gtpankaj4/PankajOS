@@ -70,7 +70,7 @@ export default function Navbar() {
           {/* Nav links with dividers */}
           <ul className="flex gap-12 items-center text-base font-bold mx-2">
             {navLinks.map((link) => (
-              <li key={link.name}>
+                <li key={link.name}>
                 <Link 
                   href={link.href} 
                   className="navbar-zoom-link hover:text-accent-blue transition-colors px-8 py-2 rounded-lg border border-main inline-flex items-center min-w-0 whitespace-nowrap max-w-fit overflow-x-auto"
@@ -83,7 +83,7 @@ export default function Navbar() {
                 >
                   <span className="truncate">{link.name}</span>
                 </Link>
-              </li>
+                </li>
             ))}
           </ul>
           {/* Contact Me button (responsive) */}

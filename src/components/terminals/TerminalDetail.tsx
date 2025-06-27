@@ -114,6 +114,14 @@ export default function TerminalDetail({ open, onClose }: { open: boolean; onClo
               autoFocus
               autoComplete="off"
             />
+            <button
+              type="button"
+              className="ml-0.5 p-2 rounded bg-neon-green text-black block sm:hidden flex items-center justify-center"
+              onClick={() => { handleCommand(input); setInput(""); }}
+              aria-label="Enter command"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-4-4 4 4-4 4"/></svg>
+            </button>
           </form>
         </div>
       </motion.div>
