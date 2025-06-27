@@ -18,7 +18,7 @@ const commands: CommandMap = {
 };
 
 export default function AboutTerminal() {
-  const [history, setHistory] = useState([
+  const [history, setHistory] = useState<(string | React.ReactNode)[]>([
     "Welcome to PankajOS! Type 'help' to get started."
   ]);
   const [input, setInput] = useState("");
@@ -35,7 +35,7 @@ export default function AboutTerminal() {
   }, [history]);
 
   const handleCommand = (cmd: string) => {
-    let output: any = [];
+    let output: (string | React.ReactNode)[] = [];
     if (cmd === "clear") {
       setHistory([]);
       return;
