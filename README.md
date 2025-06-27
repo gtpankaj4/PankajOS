@@ -36,9 +36,6 @@ npm run dev
 4. **Open your browser:**
    Go to [http://localhost:3000](http://localhost:3000)
 
-## 📸 Screenshots
-> _Add your screenshots here!_
-
 ## 🤝 Contributing
 - If you want to help or suggest something, feel free to fork this repo and make a pull request.
 - You can also open an issue if you find a bug or have an idea.
