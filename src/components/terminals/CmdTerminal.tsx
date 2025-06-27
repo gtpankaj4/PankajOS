@@ -66,7 +66,7 @@ export default function CmdTerminal() {
         break;
       case "cd about":
         newHistory.push("About Me:");
-        newHistory.push(<img src="/about-me.jpeg" alt="Pankaj Bhatta" style={{ width: '140px', height: '140px', objectFit: 'cover', borderRadius: '100%', margin: '16px auto', display: 'block', border: '3px solid #888' }} />);
+        newHistory.push("SHOW_IMAGE");
         newHistory.push("Pankaj Bhatta");
         newHistory.push("Kathmandu, Nepal");
         newHistory.push("");
@@ -120,11 +120,11 @@ export default function CmdTerminal() {
         <span className="text-accent-yellow font-mono font-bold tracking-widest">C:\\Windows\\System32\\cmd.exe</span>
       </div>
       <div className="flex-1 p-4 text-accent-yellow text-base flex flex-col justify-end overflow-y-auto cmd-terminal-content">
-        {history.map((line, i) => (
-          <div key={i} className="whitespace-pre-wrap font-mono">
-            {line}
-          </div>
-        ))}
+        {history.map((line, idx) =>
+          line === "SHOW_IMAGE"
+            ? <img key={idx} src="/about-me.jpeg" alt="Pankaj Bhatta" style={{ width: '140px', height: '140px', objectFit: 'cover', borderRadius: '100%', margin: '16px auto', display: 'block', border: '3px solid #888' }} />
+            : <div key={idx}>{line}</div>
+        )}
         <div className="flex items-center">
           <span className="text-accent-yellow">C:\Users\Pankaj&gt;</span>
           <input

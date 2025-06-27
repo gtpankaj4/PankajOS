@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PankajOS
 
-## Getting Started
+Welcome to **PankajOS**! This is a fun and interactive portfolio website made by Pankaj Bhatta. It looks like a cool terminal, and you can play with it just like a real computer terminal.
 
-First, run the development server:
+## 🚀 About
+- This website is my personal portfolio.
+- You can see my skills, experience, and more in a terminal-style interface.
+- It's built with Next.js and React, so it's fast and modern!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
+- Terminal-like About Me at the top
+- Four different themed terminals (Mac, Linux, Windows, PowerShell)
+- Light and dark mode (switch using the button on the navbar)
+- Responsive design (works on phone, tablet, and computer)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
+- Next.js 15
+- React 19
+- Tailwind CSS
+- TypeScript
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🖥️ Getting Started
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/gtpankaj4/PankajOS.git
+   cd PankajOS
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+4. **Open your browser:**
+   Go to [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📸 Screenshots
+> _Add your screenshots here!_
 
-## Learn More
+## 🤝 Contributing
+- If you want to help or suggest something, feel free to fork this repo and make a pull request.
+- You can also open an issue if you find a bug or have an idea.
 
-To learn more about Next.js, take a look at the following resources:
+## 📬 Contact
+- Email: coniopankaj999@gmail.com
+- Instagram: [pankaj.json](https://instagram.com/pankaj.json)
+- Website: [pankaj-bhatta.com.np](https://pankaj-bhatta.com.np)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Thanks for visiting my project! 😊

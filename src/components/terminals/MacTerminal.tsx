@@ -64,7 +64,7 @@ export default function MacTerminal() {
         break;
       case "% about":
         newHistory.push("About Me:");
-        newHistory.push(<img src="/about-me.jpeg" alt="Pankaj Bhatta" style={{ width: '140px', height: '140px', objectFit: 'cover', borderRadius: '100%', margin: '16px auto', display: 'block', border: '3px solid #888' }} />);
+        newHistory.push("SHOW_IMAGE");
         newHistory.push("Pankaj Bhatta");
         newHistory.push("Kathmandu, Nepal");
         newHistory.push("");
@@ -114,11 +114,11 @@ export default function MacTerminal() {
         <span className="ml-3 sm:ml-4 text-xs sm:text-sm font-bold text-white tracking-widest">Terminal — zsh</span>
       </div>
       <div className="flex-1 p-3 sm:p-4 text-white text-sm sm:text-base flex flex-col justify-end overflow-y-auto">
-        {history.map((line, i) => (
-          <div key={i} className="whitespace-pre-wrap font-mono">
-            {line}
-          </div>
-        ))}
+        {history.map((line, idx) =>
+          line === "SHOW_IMAGE"
+            ? <img key={idx} src="/about-me.jpeg" alt="Pankaj Bhatta" style={{ width: '140px', height: '140px', objectFit: 'cover', borderRadius: '100%', margin: '16px auto', display: 'block', border: '3px solid #888' }} />
+            : <div key={idx}>{line}</div>
+        )}
         <div className="flex items-center">
           <span className="text-accent-blue text-sm sm:text-base">pankaj@macbook ~ %</span>
           <input
