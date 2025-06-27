@@ -8,7 +8,7 @@ export default function PowerShellTerminal() {
     "Windows PowerShell",
     "Copyright (C) Microsoft Corporation. All rights reserved.",
     "",
-    "Type 'help' for available commands",
+    "Type &apos;help&apos; for available commands",
     ""
   ]);
   const inputRef = useRef<HTMLInputElement>(null);

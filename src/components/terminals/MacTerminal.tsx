@@ -4,9 +4,9 @@ import cvData from '../../data/cvData';
 
 export default function MacTerminal() {
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<(string | React.ReactNode)[]>([
-    <span className="text-white font-bold">Welcome to macOS Terminal</span>,
-    <span className="text-white">Type 'help' for available commands</span>,
+  const [history, setHistory] = useState<string[]>([
+    "Welcome to macOS Terminal",
+    "Type &apos;help&apos; for available commands",
     ""
   ]);
   const inputRef = useRef<HTMLInputElement>(null);

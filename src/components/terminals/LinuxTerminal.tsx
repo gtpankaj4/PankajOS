@@ -4,9 +4,9 @@ import cvData from '../../data/cvData';
 
 export default function LinuxTerminal() {
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<(string | React.ReactNode)[]>([
-    <span className="text-black font-bold">Welcome to Linux Terminal</span>,
-    <span className="text-black">Type 'help' for available commands</span>,
+  const [history, setHistory] = useState<string[]>([
+    "Welcome to Linux Terminal",
+    "Type &apos;help&apos; for available commands",
     ""
   ]);
   const inputRef = useRef<HTMLInputElement>(null);
